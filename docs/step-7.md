@@ -4,7 +4,9 @@
 
 ### Customising Login
 
-Head to the [Futureverse Playground](https://sdk-demo-authui-update.vercel.app/auth/ui-customiser), customise your login. Once you are happy, copy the configuration object and apply inside `customTheme` variable on `FvProvider.tsx`.
+Head to the [Futureverse Playground Auth-UI Beta (https://sdk-demo-authui-update.vercel.app/auth/ui-customiser)](https://sdk-demo-authui-update.vercel.app/auth/ui-customiser) to customise your Pass.Online login.
+
+Once you are happy, copy the configuration object and apply inside `customTheme` variable on `FvProvider.tsx`.
 
 Example:
 

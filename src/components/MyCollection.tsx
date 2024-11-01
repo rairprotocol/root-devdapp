@@ -1,5 +1,3 @@
-'use client';
-
 import { useAssets } from '@futureverse/asset-register-react/v2';
 import { useAuth } from '@futureverse/auth-react';
 

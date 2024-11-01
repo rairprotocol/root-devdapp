@@ -2,7 +2,7 @@
 
 ## Instructions
 
-We are now going to introduce Asset Register to our application.
+Now our users have NFTS and SFTs, we need a way to for them to see whats in their wallet... Lets start with NFTs making use of the Asset Register.
 
 ### Create Asset Register Provider to Futureverse Providers
 
@@ -85,54 +85,13 @@ Add the `AssetRegisterProvider` inside of `<AuthUiProvider ../>` tags and around
 
 ---
 
-### Add Page to query users assets and display minted tokens
+### Create Page to query users assets and display minted tokens
 
-#### Create NFT Component to display NFT
-
-Create `src/components/NftToken.tsx` with the following content
-
-```typescript
-import type { AssetModel } from '@futureverse/asset-register/models';
-import { Skeleton } from './ui/skeleton';
-
-type NftTokenProps = {
-  asset: AssetModel;
-};
-
-export default function NftToken({ asset }: NftTokenProps) {
-  return (
-    <>
-      <div className="cursor-pointer">
-        <div className="aspect-square relative cursor-pointer">
-          {asset?.metadata?.properties?.image ? (
-            <img
-              src={asset?.metadata?.properties?.image}
-              alt="alt"
-              className="aspect-square relative pointer-events-none cursor-pointer rounded-md overflow-hidden"
-            />
-          ) : (
-            <Skeleton className="aspect-square animate-pulse w-full" />
-          )}
-
-          <div className="absolute top-2 left-0 text-left text-sm md:text-base lg:text-lg leading-none font-semibold p-2 bg-slate-400 bg-opacity-50 backdrop-blur-sm">
-            {/* @ts-expect-error - Error will be fixed in SDK */}
-            Token {asset?.rawData?.tokenId}
-          </div>
-        </div>
-      </div>
-    </>
-  );
-}
-```
-
----
-
-#### Create `/my-collection` route and implement useAssets Hook in MyCollection Component
+#### Create `/my-collection` route
 
 Create `src/components/MyCollection.tsx` with the following content
 
 ```typescript
-'use client';
 
 import { useAssets } from '@futureverse/asset-register-react/v2';
 import { useAuth } from '@futureverse/auth-react';
@@ -235,7 +194,47 @@ export default function MyCollection() {
 
 ---
 
-#### Adding My Collection Page to the navigation
+#### Create NFT Component to display NFT
+
+Create `src/components/NftToken.tsx` with the following content
+
+```typescript
+import type { AssetModel } from '@futureverse/asset-register/models';
+import { Skeleton } from './ui/skeleton';
+
+type NftTokenProps = {
+  asset: AssetModel;
+};
+
+export default function NftToken({ asset }: NftTokenProps) {
+  return (
+    <>
+      <div className="cursor-pointer">
+        <div className="aspect-square relative cursor-pointer">
+          {asset?.metadata?.properties?.image ? (
+            <img
+              src={asset?.metadata?.properties?.image}
+              alt="alt"
+              className="aspect-square relative pointer-events-none cursor-pointer rounded-md overflow-hidden"
+            />
+          ) : (
+            <Skeleton className="aspect-square animate-pulse w-full" />
+          )}
+
+          <div className="absolute top-2 left-0 text-left text-sm md:text-base lg:text-lg leading-none font-semibold p-2 bg-slate-400 bg-opacity-50 backdrop-blur-sm">
+            {/* @ts-expect-error - Error will be fixed in SDK */}
+            Token {asset?.rawData?.tokenId}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+```
+
+---
+
+#### Add My Collection Page to the navigation
 
 Remove the comments in the following code blocks in `src/components/Navigation.tsx`
 
@@ -271,7 +270,7 @@ so it looks like
 
 ---
 
-#### Adding My Collection Page Route to `App.tsx`
+#### Add My Collection Route to `App.tsx`
 
 Remove the following comments from `src/App.tsx`
 

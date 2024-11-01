@@ -1,5 +1,7 @@
 # Step 2 - Interact with Blockchain
 
+Now we have users authenticated, lets create some functionality and components that will enable us to query their Root & XRP Balances and display them in a wallet component.
+
 ## Instructions
 
 ### Add TrnProvider Provider
@@ -39,7 +41,6 @@ export default function FutureverseProviders({
           <FutureverseAuthProvider authClient={authClient}>
             <AuthUiProvider themeConfig={customTheme} authClient={authClient}>
               {children}
-              <ReactQueryDevtools initialIsOpen={false} />
             </AuthUiProvider>
           </FutureverseAuthProvider>
         </FutureverseWagmiProvider>
@@ -50,9 +51,11 @@ export default function FutureverseProviders({
 
 ```
 
+---
+
 ### Query Users Root and XRP Balances and display in Menu Bar
 
-#### Balance Component
+#### Create Balance Component
 
 Create `src/components/Balance.tsx` with the following content
 
@@ -92,7 +95,9 @@ export default function Balance({
 }
 ```
 
-#### Account Component
+---
+
+#### Create Account Component
 
 Update `src/components/Account.tsx` with the following content
 
@@ -132,7 +137,9 @@ export default function Account({
 }
 ```
 
-#### Accounts Component
+---
+
+#### Create Accounts Component... (plural, not a duplicate of above 😜)
 
 Create `src/components/Accounts.tsx` with the following content
 
@@ -164,6 +171,8 @@ export function Accounts() {
   );
 }
 ```
+
+---
 
 #### Update Wallet Component
 

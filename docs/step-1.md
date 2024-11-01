@@ -1,5 +1,7 @@
 # Step 1 - Add Futureverse Providers and Pass.Online Authentication
 
+Our journey will begin by adding the Futureverse Providers required to implement Pass.Online authentication using Auth UI for styling the login flow.
+
 ## Instructions
 
 ### Add Futureverse Config
@@ -86,7 +88,7 @@ import {
 
 const customTheme: ThemeConfig = {
   ...DefaultTheme,
-  defaultAuthOption: 'web3',
+  defaultAuthOption: 'custodial',
 };
 
 export default function FutureverseProviders({
@@ -117,7 +119,7 @@ export default function FutureverseProviders({
 
 ### Create Login/Logout Buttons and add to Navigation
 
-#### Add New File `LoginButton.tsx`
+#### Create Login Button Component
 
 **Create File**: `src/components/LoginButton.tsx` and add the following content.
 
@@ -133,7 +135,7 @@ export function LoginButton({ buttonText = 'Login' }) {
 
 ```
 
-#### Add New File `LogoutButton.tsx`
+#### Create Logout Button Component
 
 **Create File**: `src/components/LogoutButton.tsx`and add the following content
 
@@ -149,7 +151,7 @@ export function LogoutButton({ buttonText = 'Logout' }) {
 
 ```
 
-#### Add New File `Wallet.tsx`
+#### Create Wallet Component
 
 **Create File**: `src/components/Wallet.tsx` and add the following content
 
@@ -173,9 +175,9 @@ export default function Wallet() {
 
 ```
 
-#### Add Wallet to the `Navigation.tsx`
+#### Add Wallet Component to Navigation
 
-Open `src/components/Navigation.tsx` and add `<Wallet />` to the `InnerNavigation` component so `Navigation.tsx` file looks like
+Open `src/components/Navigation.tsx` and add `<Wallet />` to the `InnerNavigation` component so `src/components/Navigation.tsx` looks like
 
 ```typescript
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -312,7 +314,7 @@ const RowComponent = ({
 
 ---
 
-### Add Providers & Header to `App.tsx` and enable the `/login` callback route
+### Add Providers & Header to `src/App.tsx` and create the `/login` callback route
 
 Open `src/App.tsx` and add uncomment the following imports
 
@@ -322,23 +324,9 @@ Open `src/App.tsx` and add uncomment the following imports
 // import FutureverseProviders from '@/providers/FvProvider';
 ```
 
-Inside the `Layout` function add the `<Header />` component
+Add `<FutureverseProviders>` tag outside the `<Routes>` tag in the `App` function and uncomment the Login Route so your `App.tsx`.
 
-```typescript
-function Layout() {
-  return (
-    <div className=" bg-slate-900">
-      <Header />
-      <div className="p-4 pt-24">
-        <Outlet />
-        <Toaster />
-      </div>
-    </div>
-  );
-}
-```
-
-Add `<FutureverseProviders>` tag outside the `<Routes>` tag in the `App` function and uncomment the Login Route so your `App.tsx` file looks like
+Then, inside the `Layout` function add the `<Header />` component just inside the first div... Your complete `src/App.tsx` should look like
 
 ```typescript
 /* eslint-disable @typescript-eslint/no-unused-vars */
