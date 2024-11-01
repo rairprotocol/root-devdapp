@@ -8,6 +8,8 @@ import Login from '@/components/Login';
 import MintAccessories from '@/components/MintAccessories';
 import MyCollection from '@/components/MyCollection';
 import Mint from '@/components/Mint';
+import { Toaster } from './components/ui/sonner';
+import { toast } from 'sonner';
 
 function App() {
   return (
@@ -54,15 +56,16 @@ function Layout() {
       <Header />
       <div className="p-4 pt-24">
         <Outlet />
+        <Toaster />
       </div>
     </div>
   );
 }
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
-  const isAuthed = useIsAuthed();
-
+  const { isAuthed } = useIsAuthed();
   if (!isAuthed) {
+    toast('You are not logged in, being redirected home.');
     return <Navigate to="/" replace />;
   }
 
