@@ -84,16 +84,10 @@ import {
   FutureverseWagmiProvider,
 } from '@futureverse/auth-react';
 
-import type { NetworkName } from '@therootnetwork/api';
-
 const customTheme: ThemeConfig = {
   ...DefaultTheme,
   defaultAuthOption: 'web3',
 };
-
-const network = (import.meta.env.VITE_NETWORK ?? 'porcini') as
-  | NetworkName
-  | undefined;
 
 export default function FutureverseProviders({
   children,
@@ -244,7 +238,7 @@ const InnerNavigation = ({
 
 ### Add Pass.Online Callback Page
 
-**Create File**: `/src/components/login.tsx` and add the following content
+**Create File**: `/src/components/Login.tsx` and add the following content
 
 ```typescript
 import { LoginButton } from '@/components/LoginButton';

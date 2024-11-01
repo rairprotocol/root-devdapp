@@ -52,7 +52,7 @@ export default function FutureverseProviders({
 
 ### Query Users Root and XRP Balances and display in Menu Bar
 
-#### Create `Balance.tsx`
+#### Balance Component
 
 Create `src/components/Balance.tsx` with the following content
 
@@ -92,9 +92,9 @@ export default function Balance({
 }
 ```
 
-#### Create `Account.tsx`
+#### Account Component
 
-Create `src/components/Account.tsx` with the following content
+Update `src/components/Account.tsx` with the following content
 
 ```typescript
 import { shortAddress } from '@/lib/utils';
@@ -132,7 +132,7 @@ export default function Account({
 }
 ```
 
-#### Create `Accounts.tsx`
+#### Accounts Component
 
 Create `src/components/Accounts.tsx` with the following content
 
@@ -165,9 +165,9 @@ export function Accounts() {
 }
 ```
 
-#### Update `Wallet.tsx`
+#### Update Wallet Component
 
-Open `src/components/Wallet.tsx` with the following content
+Open `src/components/Wallet.tsx` and update with the following content
 
 ```typescript
 import { useAuth } from '@futureverse/auth-react';
