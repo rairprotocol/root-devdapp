@@ -4,7 +4,7 @@
 
 We are now going to create all the components that allow us to interact with the Asset Register.
 
-### Add Component's to enable equipping SFTs to base nft
+### Add Component's to enable equipping SFTs to base NFT
 
 #### Create ARModal for Signing
 

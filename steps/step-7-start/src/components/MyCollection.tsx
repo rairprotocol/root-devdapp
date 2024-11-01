@@ -18,7 +18,7 @@ export default function MyCollection() {
 
   const assetQueryParams = React.useMemo(
     () => ({
-      first: 10,
+      first: 11,
       addresses: [userSession?.eoa, userSession?.futurepass],
       collectionIds: [`7672:root:${COLLECTION_ID}`],
     }),

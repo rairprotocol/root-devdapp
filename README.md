@@ -145,40 +145,17 @@ To run this app, please run `npm run dev`
 - [ ] Add Asset Register Provider to Futureverse Providers
   - [ ] AssetRegisterProvider.tsx
 - [ ] Add Page to query users assets and display minted tokens
-  - [ ] Create `/my-collection` route & page.tsx
-  - [ ] implement useAssets Hook
-    - [ ] Set Up Query Params
-    - [ ] deconstruct desired items
+  - [ ] Create `/my-collection` route and implement useAssets Hook
   - [ ] Create NFT Component to display NFT
-    - [ ] Image from Metadata
-    - [ ] Token Id from asset raw data
-  - [ ] Pagination using AR Infinite Query
 
 ### Step 6 - Equip / Unequip Items
 
-- [ ] Add Component's to enable equipping SFTs to base nft
-  - [ ] Get Asset Tree from AR `useGetAsset` in NFTToken Component
-  - [ ] Get Slots from Asset Tree using `useGetSlots` in NFTToken Component
-  - [ ] Add NFTAssetLinker Component to NFTToken Component passing in Slots.
-    - [ ] Add NftAssetLinkerSlots for Slots from Schema
-    - [ ] Add NftAssetLinkerAccessories for Accessories
-    - [ ] Get Items that can be linked - `useAssets`
-    - [ ] Implement Selected Items to Link
-    - [ ] Create Operations from Selected Items
-    - [ ] Add Removal Paths
-    - [ ] Talk about PrepareDelete Function
-    - [ ] Linked Items from Slots
-    - [ ] get linked items from Asset Tree Child Links
-    - [ ] Tabs to cycle through items to equip
-    - [ ] click event to select to equip
-    - [ ] prepare operations
-    - [ ] map through linked items
+- [ ] Add Component's to enable equipping SFTs to base NFT
   - [ ] Create ARModal for Signing
-    - [ ] stringify operations
-    - [ ] add useGetARTM for signing
-    - [ ] add useSignAndSubmitTransaction sending
-    - [ ] add useGetTransaction for tracking
-    - [ ] Output for signing states
+  - [ ] Add NftAssetLinkerAccessories for Accessories
+  - [ ] Add NftAssetLinkerSlots for Slots from Schema
+  - [ ] Add NFTAssetLinker Component to NFTToken Component passing in Slots.
+  - [ ] Adding `NftAssetLinker.tsx` component, with `useGetAsset` and `useGetSlots` hooks to `NftToken.tsx`
 
 ### Step 7 - Added Bonus
 
