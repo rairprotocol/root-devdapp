@@ -9,17 +9,14 @@ import {
 } from './ui/dropdown-menu';
 import { Accounts } from './Accounts';
 import { useAccount } from 'wagmi';
+import { LogoutButton } from './LogoutButton';
 
 export default function Wallet() {
-  const { userSession, signOut } = useAuth();
+  const { userSession } = useAuth();
   const { isConnected } = useAccount();
 
   if (!userSession || !isConnected) {
-    return (
-      <div>
-        <LoginButton />
-      </div>
-    );
+    return <LoginButton />;
   }
 
   return (
@@ -30,9 +27,7 @@ export default function Wallet() {
       <DropdownMenuContent align="end">
         <div className="grid gap-3 p-2">
           <Accounts />
-          <Button variant="default" onClick={() => signOut()}>
-            Logout
-          </Button>
+          <LogoutButton />
         </div>
       </DropdownMenuContent>
     </DropdownMenu>

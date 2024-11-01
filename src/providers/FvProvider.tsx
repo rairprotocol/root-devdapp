@@ -2,11 +2,7 @@ import React from 'react';
 
 import { QueryClientProvider } from '@tanstack/react-query';
 
-import {
-  authClient,
-  getWagmiConfig,
-  queryClient,
-} from '@/components/providers/config';
+import { authClient, getWagmiConfig, queryClient } from '@/providers/config';
 
 import type { State } from 'wagmi';
 import { TrnApiProvider } from '@futureverse/transact-react';

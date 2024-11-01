@@ -1,50 +1,193 @@
-# React + TypeScript + Vite
+# Futureverse Workshop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+All packages have been preinstalled for you, we will work through the steps as we go. If you fall behind, you can pick up on the next step and copy in the files needed to catch you up.
 
-Currently, two official plugins are available:
+To run this app, please run `npm run dev`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Important Links
 
-## Expanding the ESLint configuration
+- [Playground](https://playground.therootnetwork.com/)
+- [Faucet](https://faucet.rootnet.cloud/)
+- [Portal](https://portal.rootnet.live/)
+- [SDK Documentation](https://docs.futureverse.com/dev/)
+- [Pass.Online Client Creation](https://login.passonline.cloud/manageclients)
+- [shadcn/ui - Components For Demo](https://ui.shadcn.com/docs)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Getting Started
 
-- Configure the top-level `parserOptions` property like this:
+- When prompted, head to the [Root Network Playground](https://playground.therootnetwork.com/) and create your Pass.Online for our testnet, Porcini.
+- Get some testnet funds from our [Faucet](https://faucet.rootnet.cloud/).
+- Clone this repo in Replit.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## API Keys
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- [Pass.Online Client Portal](https://login.passonline.cloud/manageclients) - If you want to create your own Pass Online, create it here, ensuring you use the ExAcT url of your Replit URL for the callback url.
+- [Wallet Connect](https://cloud.reown.com/sign-in)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Steps
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Step 1 - Connect using FuturePass
+
+- [ ] Create config.ts Auth Config
+  - [ ] All Environment Variables
+  - [ ] Add Auth Config
+  - [ ] Add Wagmi Config
+  - [ ] Add Query Client
+- [ ] Add Futureverse Providers
+  - [ ] React Query Provider
+  - [ ] Futureverse Wagmi Providers
+  - [ ] Futureverse Auth Provider
+  - [ ] Auth UI Provider
+- [ ] Add Login Button to Nav Bar
+- [ ] Add `/login` Callback Page To Handle UserSession
+- [ ] Display User Address In Nav Bar
+
+### Step 2 - Interact with Blockchain
+
+- [ ] Add TrnProvider from `@futureverse/transact-react` To Futureverse Providers
+- [ ] Query Users Root and XRP Balances and display in Menu Bar (shadcn/ui drop down)
+  - [ ] Add Accounts to Wallet (shadcn/ui)
+    - [ ] Use useShouldShowEoa to display EOA if allowed
+    - [ ] Add Account Component
+      - [ ] Add Balance (iterate through assets)
+        - [ ] useGetUserBalance
+          - [ ] getBalance function in useQuery
+          - [ ] transactionQuery from useTransactionQuery
+        - [ ] useGetUserBalances
+          - [ ] getBalances function in useQuery
+
+### Step 3 - Mint NFTs to users FuturePass
+
+- [ ] Update Home Page To Link to New Mint Page
+- [ ] Create a mint page to mint nft
+  - [ ] Update Navigation Bar (shadcn/ui)
+    - [ ] Add Mint Mav Link
+  - [ ] add `(authed)` Route Folder
+    - [ ] add layout.tsx
+      - [ ] set up cookies/userSession validation using /me endpoint
+      - [ ] ensure server only auth function used
+    - [ ] add `/mint` route
+      - [ ] Get required items for Transact SDK (UserSession, TrnApi, Signer)
+      - [ ] Set up States
+        - [ ] gas
+        - [ ] payload
+        - [ ] walletToPayGas
+        - [ ] gasTokenId
+        - [ ] toSign
+        - [ ] currentBuilder
+        - [ ] mint qty
+        - [ ] show modal
+      - [ ] useGetTokenCount
+        - [ ] eoa
+        - [ ] fpass
+      - [ ] handleQty Change function
+      - [ ] onSuccessCallback function to refetch count
+      - [ ] create mintBuilder component
+        - [ ] run address through getAddress & null address validation
+        - [ ] add getExtrinsic
+        - [ ] gas Fees
+        - [ ] payloads
+        - [ ] setUp mint extrinsic through transact
+        - [ ] set up gas fee proxy
+        - [ ] set up pass proxy
+        - [ ] show modal when to sign has been set
+      - [ ] Add Mint Control component
+        - [ ] pass in mint qty, handle set Mint Qty, totalCount & isFetching
+        - [ ] Slider with numeric input (shadcn/ui)
+          - [ ] only show futurepass proxy if useEoa is ok
+        - [ ] Add Fee Proxy (shadcn/ui)
+        - [ ] Add Pass Proxy (shadcn/ui)
+- [ ] Components to Display Mint Result (shadcn/ui)
+  - [ ] Add Modal
+    - [ ] Dialog (shadcn/ui)
+    - [ ] States for
+      - [ ] Sign
+      - [ ] Signed
+      - [ ] Processing
+      - [ ] Success
+      - [ ] Error
+    - [ ] onSign Callback
+    - [ ] onSend Callback
+    - [ ] result Callback
+    - [ ] add signExtrinsic function
+- [ ] Add validation for user balance > gas payments
+  - [ ] Check user balance is greater than the gas amount
+  - [ ] Check user not balance is less than required amount
+- [ ] Add sign logic to mint to fpass
+
+### Step 4 - Mint SFTs to users FuturePass
+
+- [ ] Create a mint page to mint multiple SFTs
+  - [ ] Add `/accessories`
+    - [ ] add page.tsx
+    - [ ] update navigation
+    - [ ] add useGetSftUserTokens
+    - [ ] add SftToken.tsx
+    - [ ] add SftSelector.tsx
+    - [ ] implement in page.tsx
+      - [ ] Set Up TokenType
+      - [ ] useGetSftUserTokens for each wallet and collection
+        - [ ] merged collection function to combine wallet ownership
+      - [ ] onSuccessful Mint callback
+      - [ ] set up Mint Builder function
+        - [ ] trnApi, signer & user session checks
+        - [ ] addressToSend & validation
+        - [ ] getExtrinsic function to get gasFees & Payloads
+        - [ ] getTokensToMint function to prepare the extrinsics
+        - [ ] prepare extrinsics
+        - [ ] create Batch Transact
+        - [ ] implement SftSelector on page.tsx
+- [ ] Add logic to display mint result
+  - [ ] Update Mint Qty
+
+### Step 5 - Introduce AR
+
+- [ ] Add Asset Register Provider to Futureverse Providers
+  - [ ] AssetRegisterProvider.tsx
+- [ ] Add Page to query users assets and display minted tokens
+  - [ ] Create `/my-collection` route & page.tsx
+  - [ ] implement useAssets Hook
+    - [ ] Set Up Query Params
+    - [ ] deconstruct desired items
+  - [ ] Create NFT Component to display NFT
+    - [ ] Image from Metadata
+    - [ ] Token Id from asset raw data
+  - [ ] Pagination using AR Infinite Query
+
+### Step 6 - Equip / Unequip Items
+
+- [ ] Add Component's to enable equipping SFTs to base nft
+  - [ ] Get Asset Tree from AR `useGetAsset` in NFTToken Component
+  - [ ] Get Slots from Asset Tree using `useGetSlots` in NFTToken Component
+  - [ ] Add NFTAssetLinker Component to NFTToken Component passing in Slots.
+    - [ ] Add NftAssetLinkerSlots for Slots from Schema
+    - [ ] Add NftAssetLinkerAccessories for Accessories
+    - [ ] Get Items that can be linked - `useAssets`
+    - [ ] Implement Selected Items to Link
+    - [ ] Create Operations from Selected Items
+    - [ ] Add Removal Paths
+    - [ ] Talk about PrepareDelete Function
+    - [ ] Linked Items from Slots
+    - [ ] get linked items from Asset Tree Child Links
+    - [ ] Tabs to cycle through items to equip
+    - [ ] click event to select to equip
+    - [ ] prepare operations
+    - [ ] map through linked items
+  - [ ] Create ARModal for Signing
+    - [ ] stringify operations
+    - [ ] add useGetARTM for signing
+    - [ ] add useSignAndSubmitTransaction sending
+    - [ ] add useGetTransaction for tracking
+    - [ ] Output for signing states
+
+### Step 7 - Added Bonus
+
+- [ ] Customise Log In
+  - [ ] Save in FutureverseProviders.tsx
+- [ ] Add RNS Functionality
+  - [ ] Add RNS Query
+  - [ ] Add RNS Library
+    - [ ] getRnsUrl
+    - [ ] getRnsFromAddress
+    - [ ] getAddressFromRns
+    - [ ] getRnsImage

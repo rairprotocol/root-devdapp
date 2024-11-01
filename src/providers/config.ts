@@ -34,7 +34,7 @@ export const getWagmiConfig = async () => {
     walletConnectProjectId,
     authClient,
     metamaskDappMetadata: {
-      name: 'Futurevrse Paris Workshop',
+      name: 'Futureverse Paris Workshop',
       url: 'https://xxx.replit.dev',
     },
     transports: {

@@ -3,7 +3,7 @@ import { Routes, Route, Outlet, Navigate } from 'react-router-dom';
 import Home from '@/components/Home';
 import useIsAuthed from '@/hooks/useIsAuthed';
 import Header from '@/components/Header';
-import FutureverseProviders from '@/components/providers/FvProvider';
+import FutureverseProviders from '@/providers/FvProvider';
 import Login from '@/components/Login';
 import MintAccessories from '@/components/MintAccessories';
 import MyCollection from '@/components/MyCollection';
