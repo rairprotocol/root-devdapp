@@ -283,22 +283,9 @@ const RowComponent = ({
 
 ### Add Providers & Header to `App.tsx` and enable the `/login` callback route
 
-Open `src/App.tsx` place the following content
+Open `src/App.tsx` and uncomment the Routes with Home and Login components
 
 ```typescript
-import './App.css';
-import { Routes, Route, Outlet, Navigate } from 'react-router-dom';
-import Home from '@/components/Home';
-import useIsAuthed from '@/hooks/useIsAuthed';
-import Header from '@/components/Header';
-import FutureverseProviders from '@/providers/FvProvider';
-import Login from '@/components/Login';
-// import MintAccessories from '@/components/MintAccessories';
-// import MyCollection from '@/components/MyCollection';
-// import Mint from '@/components/Mint';
-import { Toaster } from './components/ui/sonner';
-import { toast } from 'sonner';
-
 function App() {
   return (
     <FutureverseProviders>

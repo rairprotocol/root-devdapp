@@ -183,11 +183,4 @@ To run this app, please run `npm run dev`
 ### Step 7 - Added Bonus
 
 - [ ] Customise Log In
-  - [ ] Save in FutureverseProviders.tsx
 - [ ] Add RNS Functionality
-  - [ ] Add RNS Query
-  - [ ] Add RNS Library
-    - [ ] getRnsUrl
-    - [ ] getRnsFromAddress
-    - [ ] getAddressFromRns
-    - [ ] getRnsImage
