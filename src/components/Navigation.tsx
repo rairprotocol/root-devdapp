@@ -1,11 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
+import { Link } from 'react-router-dom';
 import {
   NavigationMenu,
   NavigationMenuItem,
+  NavigationMenuLink,
   NavigationMenuList,
+  navigationMenuTriggerStyle,
 } from './ui/navigation-menu';
 
+import Wallet from './Wallet';
 import { type Dispatch, type SetStateAction, useState } from 'react';
 
 export function Navigation() {
@@ -45,7 +47,36 @@ const InnerNavigation = ({
   return (
     <NavigationMenu>
       <NavigationMenuList className={classes}>
-        <NavigationMenuItem></NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink
+            asChild
+            onClick={() => closeHandler && closeHandler(false)}
+            className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-transparent text-white hover:text-orange-500 duration-300 transition-colors text-lg`}
+          >
+            <Link to="/mint">Mint NFT</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink
+            onClick={() => closeHandler && closeHandler(false)}
+            asChild
+            className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-transparent text-white hover:text-orange-500 duration-300 transition-colors text-lg`}
+          >
+            <Link to="/accessories">Mint Accessories</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink
+            asChild
+            onClick={() => closeHandler && closeHandler(false)}
+            className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-transparent text-white hover:text-orange-500 duration-300 transition-colors text-lg`}
+          >
+            <Link to="/my-collection">My Collection</Link>
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <Wallet />
+        </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
   );
