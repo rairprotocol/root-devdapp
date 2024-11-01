@@ -65,7 +65,7 @@ function Layout() {
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthed } = useIsAuthed();
   if (!isAuthed) {
-    toast('You are not logged in, being redirected home.');
+    toast.warning('You are not logged in.');
     return <Navigate to="/" replace />;
   }
 
