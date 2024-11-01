@@ -44,101 +44,22 @@ To run this app, please run `npm run dev`
 
 ### Step 2 - Interact with Blockchain
 
-- [ ] Add TrnProvider from `@futureverse/transact-react` To Futureverse Providers
-- [ ] Query Users Root and XRP Balances and display in Menu Bar (shadcn/ui drop down)
-  - [ ] Add Accounts to Wallet (shadcn/ui)
-    - [ ] Use useShouldShowEoa to display EOA if allowed
-    - [ ] Add Account Component
-      - [ ] Add Balance (iterate through assets)
-        - [ ] useGetUserBalance
-          - [ ] getBalance function in useQuery
-          - [ ] transactionQuery from useTransactionQuery
-        - [ ] useGetUserBalances
-          - [ ] getBalances function in useQuery
+- [ ] Add TrnProvider Provider
+- [ ] Query Users Root and XRP Balances and display in Menu Bar
 
 ### Step 3 - Mint NFTs to users FuturePass
 
-- [ ] Update Home Page To Link to New Mint Page
-- [ ] Create a mint page to mint nft
-  - [ ] Update Navigation Bar (shadcn/ui)
-    - [ ] Add Mint Mav Link
-  - [ ] add `(authed)` Route Folder
-    - [ ] add layout.tsx
-      - [ ] set up cookies/userSession validation using /me endpoint
-      - [ ] ensure server only auth function used
-    - [ ] add `/mint` route
-      - [ ] Get required items for Transact SDK (UserSession, TrnApi, Signer)
-      - [ ] Set up States
-        - [ ] gas
-        - [ ] payload
-        - [ ] walletToPayGas
-        - [ ] gasTokenId
-        - [ ] toSign
-        - [ ] currentBuilder
-        - [ ] mint qty
-        - [ ] show modal
-      - [ ] useGetTokenCount
-        - [ ] eoa
-        - [ ] fpass
-      - [ ] handleQty Change function
-      - [ ] onSuccessCallback function to refetch count
-      - [ ] create mintBuilder component
-        - [ ] run address through getAddress & null address validation
-        - [ ] add getExtrinsic
-        - [ ] gas Fees
-        - [ ] payloads
-        - [ ] setUp mint extrinsic through transact
-        - [ ] set up gas fee proxy
-        - [ ] set up pass proxy
-        - [ ] show modal when to sign has been set
-      - [ ] Add Mint Control component
-        - [ ] pass in mint qty, handle set Mint Qty, totalCount & isFetching
-        - [ ] Slider with numeric input (shadcn/ui)
-          - [ ] only show futurepass proxy if useEoa is ok
-        - [ ] Add Fee Proxy (shadcn/ui)
-        - [ ] Add Pass Proxy (shadcn/ui)
-- [ ] Components to Display Mint Result (shadcn/ui)
-  - [ ] Add Modal
-    - [ ] Dialog (shadcn/ui)
-    - [ ] States for
-      - [ ] Sign
-      - [ ] Signed
-      - [ ] Processing
-      - [ ] Success
-      - [ ] Error
-    - [ ] onSign Callback
-    - [ ] onSend Callback
-    - [ ] result Callback
-    - [ ] add signExtrinsic function
-- [ ] Add validation for user balance > gas payments
-  - [ ] Check user balance is greater than the gas amount
-  - [ ] Check user not balance is less than required amount
-- [ ] Add sign logic to mint to fpass
+- [ ] Create a mint page to mint NFT
+- [ ] Create Protected Routes
+  - [ ] Create `/mint` route
+    - [ ] Add Mint Control component
+    - [ ] Add Modal
 
 ### Step 4 - Mint SFTs to users FuturePass
 
 - [ ] Create a mint page to mint multiple SFTs
-  - [ ] Add `/accessories`
-    - [ ] add page.tsx
-    - [ ] update navigation
-    - [ ] add useGetSftUserTokens
-    - [ ] add SftToken.tsx
-    - [ ] add SftSelector.tsx
-    - [ ] implement in page.tsx
-      - [ ] Set Up TokenType
-      - [ ] useGetSftUserTokens for each wallet and collection
-        - [ ] merged collection function to combine wallet ownership
-      - [ ] onSuccessful Mint callback
-      - [ ] set up Mint Builder function
-        - [ ] trnApi, signer & user session checks
-        - [ ] addressToSend & validation
-        - [ ] getExtrinsic function to get gasFees & Payloads
-        - [ ] getTokensToMint function to prepare the extrinsics
-        - [ ] prepare extrinsics
-        - [ ] create Batch Transact
-        - [ ] implement SftSelector on page.tsx
-- [ ] Add logic to display mint result
-  - [ ] Update Mint Qty
+  - [ ] Create /accessories and associated components
+  - [ ] useGetSftUserTokens for each wallet and collection
 
 ### Step 5 - Introduce AR
 

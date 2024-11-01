@@ -1,4 +1,4 @@
-# Adding Futureverse Providers and Pass.Online Authentication
+# Step 1 - Add Futureverse Providers and Pass.Online Authentication
 
 ## Instructions
 
@@ -181,9 +181,45 @@ export default function Wallet() {
 
 #### Add Wallet to the `Navigation.tsx`
 
-Open `src/components/Navigation.tsx` and add `<Wallet />` to the `InnerNavigation` component so looks like
+Open `src/components/Navigation.tsx` and add `<Wallet />` to the `InnerNavigation` component so `Navigation.tsx` file looks like
 
 ```typescript
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import {
+  NavigationMenu,
+  NavigationMenuItem, NavigationMenuList
+} from './ui/navigation-menu';
+
+import Wallet from './Wallet';
+import { type Dispatch, type SetStateAction, useState } from 'react';
+
+export function Navigation() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  return (
+    <div className="relative">
+      <InnerNavigation
+        classes="hidden lg:flex flex-row"
+        closeHandler={setIsMenuOpen}
+      />
+      <button
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        className="text-white hover:text-orange-500 duration-300 transition-colors flex lg:hidden border-orange-500 border-[1px] rounded-md p-2 uppercase text-xs tracking-wider"
+      >
+        Menu
+      </button>
+      {isMenuOpen && (
+        <div className="absolute -right-4 -bottom-6 translate-y-full bg-slate-500 bg-opacity-90 rounded-md p-2 pl-1.5 items-end">
+          <InnerNavigation
+            classes="flex lg:hidden flex-col text-end items-end"
+            closeHandler={setIsMenuOpen}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
 const InnerNavigation = ({
   classes = '',
   closeHandler,
@@ -201,6 +237,7 @@ const InnerNavigation = ({
     </NavigationMenu>
   );
 };
+
 ```
 
 ---
@@ -283,9 +320,48 @@ const RowComponent = ({
 
 ### Add Providers & Header to `App.tsx` and enable the `/login` callback route
 
-Open `src/App.tsx` and uncomment the Routes with Home and Login components
+Open `src/App.tsx` and add uncomment the following imports
 
 ```typescript
+// import Header from '@/components/Header';
+// import Login from '@/components/Login';
+// import FutureverseProviders from '@/providers/FvProvider';
+```
+
+Inside the `Layout` function add the `<Header />` component
+
+```typescript
+function Layout() {
+  return (
+    <div className=" bg-slate-900">
+      <Header />
+      <div className="p-4 pt-24">
+        <Outlet />
+        <Toaster />
+      </div>
+    </div>
+  );
+}
+```
+
+Add `<FutureverseProviders>` tag outside the `<Routes>` tag in the `App` function and uncomment the Login Route so your `App.tsx` file looks like
+
+```typescript
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import './App.css';
+import { Routes, Route, Outlet, Navigate } from 'react-router-dom';
+import Home from '@/components/Home';
+import useIsAuthed from '@/hooks/useIsAuthed';
+import Header from '@/components/Header';
+import Login from '@/components/Login';
+import FutureverseProviders from '@/providers/FvProvider';
+// import MintAccessories from '@/components/MintAccessories';
+// import MyCollection from '@/components/MyCollection';
+// import Mint from '@/components/Mint';
+import { Toaster } from './components/ui/sonner';
+import { toast } from 'sonner';
+import { useEffect } from 'react';
+
 function App() {
   return (
     <FutureverseProviders>
@@ -293,30 +369,30 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="/login" element={<Login />} />
-          // <Route
-          //   path="/mint"
-          //   element={
-          //     <ProtectedRoute>
-          //       <Mint />
-          //     </ProtectedRoute>
-          //   }
-          // />
-          // <Route
-          //   path="/accessories"
-          //   element={
-          //     <ProtectedRoute>
-          //       <MintAccessories />
-          //     </ProtectedRoute>
-          //   }
-          // />
-          // <Route
-          //   path="/my-collection"
-          //   element={
-          //     <ProtectedRoute>
-          //       <MyCollection />
-          //     </ProtectedRoute>
-          //   }
-          // />
+          {/* <Route
+            path="/mint"
+            element={
+              <ProtectedRoute>
+                <Mint />
+              </ProtectedRoute>
+            }
+          /> */}
+          {/* <Route
+            path="/accessories"
+            element={
+              <ProtectedRoute>
+                <MintAccessories />
+              </ProtectedRoute>
+            }
+          /> */}
+          {/* <Route
+            path="/my-collection"
+            element={
+              <ProtectedRoute>
+                <MyCollection />
+              </ProtectedRoute>
+            }
+          /> */}
         </Route>
       </Routes>
     </FutureverseProviders>
@@ -340,12 +416,18 @@ function Layout() {
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthed } = useIsAuthed();
 
+  useEffect(() => {
+    if (!isAuthed) {
+      toast.warning('You are not logged in or your wallet is not connected', {
+        id: 'login',
+      });
+    }
+  }, [isAuthed]);
+
   if (!isAuthed) {
-    toast.warning('You are not logged in.');
     return <Navigate to="/" replace />;
   }
 
-  return children;
+  return <>{children}</>;
 }
-
 ```

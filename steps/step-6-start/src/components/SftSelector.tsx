@@ -1,6 +1,7 @@
 import React from 'react';
 import SftToken from './SftToken';
-import type { TokenType } from '@/app/(authed)/accessories/page';
+import type { TokenType } from './MintAccessories';
+('@/app/(authed)/accessories/page');
 
 type SftSelectorProps = {
   type: string;

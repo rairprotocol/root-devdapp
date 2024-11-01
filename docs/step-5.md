@@ -237,36 +237,36 @@ export default function MyCollection() {
 
 #### Adding My Collection Page to the navigation
 
-Remove the comments the following code blocks in `src/components/Navigation.tsx`
+Remove the comments in the following code blocks in `src/components/Navigation.tsx`
 
 ```typescript
 {
   /* 
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            asChild
-            onClick={() => closeHandler && closeHandler(false)}
-            className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-transparent text-white hover:text-orange-500 duration-300 transition-colors text-lg`}
-          >
-            <Link to="/my-collection">My Collection</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        */
+  <NavigationMenuItem>
+    <NavigationMenuLink
+      asChild
+      onClick={() => closeHandler && closeHandler(false)}
+      className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-transparent text-white hover:text-orange-500 duration-300 transition-colors text-lg`}
+    >
+      <Link to="/my-collection">My Collection</Link>
+    </NavigationMenuLink>
+  </NavigationMenuItem>
+  */
 }
 ```
 
 so it looks like
 
 ```typescript
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            asChild
-            onClick={() => closeHandler && closeHandler(false)}
-            className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-transparent text-white hover:text-orange-500 duration-300 transition-colors text-lg`}
-          >
-            <Link to="/my-collection">My Collection</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
+<NavigationMenuItem>
+  <NavigationMenuLink
+    asChild
+    onClick={() => closeHandler && closeHandler(false)}
+    className={`${navigationMenuTriggerStyle()} bg-transparent hover:bg-transparent text-white hover:text-orange-500 duration-300 transition-colors text-lg`}
+  >
+    <Link to="/my-collection">My Collection</Link>
+  </NavigationMenuLink>
+</NavigationMenuItem>
 ```
 
 ---
@@ -284,25 +284,25 @@ and
 ```typescript
 {
   /* <Route
-            path="/my-collection"
-            element={
-              <ProtectedRoute>
-                <MyCollection />
-              </ProtectedRoute>
-            }
-          /> */
+    path="/my-collection"
+    element={
+      <ProtectedRoute>
+        <MyCollection />
+      </ProtectedRoute>
+    }
+  /> */
 }
 ```
 
 so it looks like
 
 ```typescript
-          <Route
-            path="/my-collection"
-            element={
-              <ProtectedRoute>
-                <MyCollection />
-              </ProtectedRoute>
-            }
-          />
+<Route
+  path="/my-collection"
+  element={
+    <ProtectedRoute>
+      <MyCollection />
+    </ProtectedRoute>
+  }
+/>
 ```
