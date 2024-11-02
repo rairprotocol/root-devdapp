@@ -47,7 +47,7 @@ const customTheme: ThemeConfig = {
 
 ### Adding RNS Functionality
 
-Change `src/components/Wallet.tsx` so it looks like
+Change `src/components/Account.tsx` so it looks like
 
 ```typescript
 import { shortAddress } from '@/lib/utils';
