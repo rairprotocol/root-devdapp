@@ -15,9 +15,7 @@ To run this app, please run `npm run dev`
 
 ## Getting Started
 
-- When prompted, head to the [Root Network Playground](https://playground.therootnetwork.com/) and create your Pass.Online for our testnet, Porcini.
-- Get some testnet funds from our [Faucet](https://faucet.rootnet.cloud/).
-- Clone this repo in Replit.
+- [Fork In Replit](https://replit.com/@qtrichierich/fv-workshop-vite?v=1) - Head here to fork this project in Replit.
 
 ## API Keys
 
