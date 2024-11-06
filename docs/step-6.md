@@ -1,8 +1,13 @@
 # Step 6 - Equip/Unequip Items
 
-## Instructions
-
 We are now going to create all the components that allow us to interact with the Asset Register.
+
+## Example Links
+
+- [Start Example](https://fv-workshop-step-6-start.vercel.app/)
+- [Finish Example](https://fv-workshop-step-7-start.vercel.app/)
+
+## Instructions
 
 ### Add Component's to enable equipping SFTs to base NFT
 

@@ -1,8 +1,15 @@
 # Added Bonus - Customising Login & Adding RNS Functionality
 
+Finally, lets add some custom styling to our Pass Online UI and add RNS to the users wallet component.
+
+## Example Links
+
+- [Start Example](https://fv-workshop-step-7-start.vercel.app/)
+- [Finish Example](https://workshop.futureverse.com/)
+
 ## Instructions
 
-### Customising Login
+### Customising the Login
 
 Head to the [Futureverse Playground Auth-UI Beta (https://sdk-demo-authui-update.vercel.app/auth/ui-customiser)](https://sdk-demo-authui-update.vercel.app/auth/ui-customiser) to customise your Pass.Online login.
 
