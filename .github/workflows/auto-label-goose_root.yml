@@ -34,7 +34,7 @@ jobs:
                  git stash
                  git pull https://x-access-token:${{ secrets.PAT }}@github.com/DevDappcom/devdapp-bot.git
                  ls
-                 echo $ISSUE_NUMBER
+                 echo $ISSUE_NUMBER > $HOME/issue_no.txt
                  echo $REPOSITORY
 
             - name: Run Goose with github extension
