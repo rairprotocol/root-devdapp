@@ -1,0 +1,4 @@
+labels:
+  - name: Unresolved
+    color: B60205
+    description: Issue that has not been resolved
