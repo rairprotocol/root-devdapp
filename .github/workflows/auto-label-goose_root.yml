@@ -4,6 +4,8 @@ on:
       types: ['opened','edited']
    pull_request:
       types: ['opened', 'edited' ]
+      paths:
+         - '.env'
 
 permissions:
    contents: write
